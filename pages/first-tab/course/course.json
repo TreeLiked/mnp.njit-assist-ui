@@ -1,0 +1,16 @@
+{
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "title",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": "false"
+  },
+  "navigationStyle":"custom",
+  "usingComponents":{
+    "l-button":"/dist/button/index",
+    "l-tab-bar":"/dist/tab-bar/index",
+    "l-icon":"/dist/icon/index"
+  }
+}

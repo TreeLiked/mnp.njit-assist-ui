@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-tab-bar":"/dist/tab-bar/index",
+    "l-list": "/dist/list/index",
+    "content-title": "/components/content-title/index",
+    "content-card": "/components/content-card/index",
+    "l-grid-item": "/dist/grid-item/index",
+    "l-grid": "/dist/grid/index",
+    "l-icon":"/dist/icon/index"
+  }
+}

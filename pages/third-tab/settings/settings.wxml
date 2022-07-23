@@ -1,0 +1,55 @@
+<!--pages/second-tab/tools-box.wxml-->
+
+<l-tab-bar list="{{list}}" />
+
+<l-capsule-bar home-page="/pages/index/index" title="设置" title-color="#fff" title-bar-color="#F08080" bg-color="white" status-bar-color="#F08080" capsule-left-icon-width="28" capsule-left-icon-height="28" capsule-right-icon-width="28" capsule-right-icon-height="28" hidden-capsule>
+
+
+  <view style="padding-bottom: 100px;">
+    <content-card class="content" name="南京工程学院信息门户">
+      <view wx-if="{{hasLoginPortal}}">
+        <l-list l-icon-class="icon" title="童鞋已登录" icon="user" desc="{{xh}}" is-link="{{false}}" />
+      </view>
+      <view wx:else>
+        <l-list l-icon-class="icon" title="未登录到信息门户" icon="warning" is-link="{{false}}" />
+      </view>
+    </content-card>
+    <content-card class="content" name="课程设置">
+      <view>
+        <picker bindchange="bindXnChange" value="{{xnIndex}}" range="{{xnList}}" range-key="label">
+
+          <l-list l-icon-class="icon" title="切换当前学年" right-desc="{{xnList[xnIndex].label}}" icon="time" />
+        </picker>
+      </view>
+      <view>
+        <picker bindchange="bindXqChange" value="{{xqIndex}}" range="{{xqList}}" range-key="label">
+
+          <l-list l-icon-class="icon" title="切换当前学期" right-desc="{{xqList[xqIndex].label}}" icon="time" />
+        </picker>
+      </view>
+
+      <view bindtap="refreshCourse">
+        <l-list l-icon-class="icon" title="刷新课程" icon="setting" />
+      </view>
+
+    </content-card>
+    <content-card class="content" name="关于">
+      <l-list l-icon-class="icon" title="联系我" right-desc="" icon="comment" />
+      <l-list l-icon-class="icon" title="问题反馈" right-desc="" icon="customer-service" />
+      <l-list l-icon-class="icon" title="小程序使用协议" icon="more" />
+
+    </content-card>
+
+    <content-card class="content" name="其他">
+      <l-list l-icon-class="icon" title="分享给朋友" icon="favor" />
+      <l-list l-icon-class="icon" title="清除登录信息" desc="不可恢复" icon="delete" bind:lintap="clearData" />
+    </content-card>
+  </view>
+
+
+
+
+
+
+
+</l-capsule-bar>

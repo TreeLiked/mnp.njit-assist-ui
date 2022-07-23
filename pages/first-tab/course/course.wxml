@@ -1,0 +1,203 @@
+<l-capsule-bar home-page="/pages/index/index" title="南工程助手" title-color="#fff" title-bar-color="#7BC8A4" bg-color="black" status-bar-color="#7BC8A4" capsule-left-icon-width="28" capsule-left-icon-height="28" capsule-right-icon-width="28" capsule-right-icon-height="28" hidden-capsule>
+  <l-tab-bar list="{{list}}" />
+
+  <view class='body'>
+    <view class="table">
+      <view class="th0 bg-w">
+        <view class="th">时间</view>
+        <view class="th">周一</view>
+        <view class="th">周二</view>
+        <view class="th">周三</view>
+        <view class="th">周四</view>
+        <view class="th">周五</view>
+        <view class="th" wx-if="{{showSix}}">周六</view>
+        <view class="th" wx-if="{{showSeven}}">周日</view>
+      </view>
+
+      <view class="main-table">
+        <view class="th1 bg-w">
+          <block wx:for='{{weekDate}}' wx:for-item="item" wx:key='key'>
+            <view class="{{item.red == true ? 'date-th date-red' : 'date-th'}}" wx-if="{{index < 6 || index == 6 && showSix || index == 7 && showSeven}}">{{item.str}}</view>
+          </block>
+          <!-- <view class="date-th">{{weekDate[0]}}</view>
+        <view class="date-th">18</view>
+        <view class="date-th">19</view>
+        <view class="date-th">20</view>
+        <view class="date-th">21</view>
+        <view class="date-th">22</view>
+        <view class="date-th" wx-if="{{showSix}}">周六</view>
+        <view class="date-th" wx-if="{{showSeven}}">周日</view> -->
+        </view>
+
+        <!-- <block wx:for="{{listData}}" wx:key="{{code}}"> -->
+        <block>
+          <view class="tr bg-g">
+            <view class='td'>
+              <text>1-2\n8:00\n-\n9:40</text>
+            </view>
+            <view class='td' style="background-color:{{c11.color}}" data-idx='c11' bindtap='moreInfo'>
+              <text>{{c11.displayName}}</text>
+            </view>
+            <view class='td' style="background-color:{{c12.color}}" data-idx='c12' bindtap='moreInfo'>
+              <text>{{c12.displayName}}</text>
+            </view>
+            <view class='td' style="background-color:{{c13.color}}" data-idx='c13' bindtap='moreInfo'>
+              <text>{{c13.displayName}}</text>
+            </view>
+            <view class='td' style="background-color:{{c14.color}}" data-idx='c14' bindtap='moreInfo'>
+              <text>{{c14.displayName}}</text>
+            </view>
+            <view class='td' style="background-color:{{c15.color}}" data-idx='c15' bindtap='moreInfo'>
+              <text>{{c15.displayName}}</text>
+            </view>
+            <view class='td' style="background-color:{{c16.color}}" wx-if="{{showSix}}" data-idx='c16' bindtap='moreInfo'>
+              <text>{{c16.displayName}}</text>
+            </view>
+            <view class='td' style="background-color:{{c17.color}}" wx-if="{{showSeven}}" data-idx='c17' bindtap='moreInfo'>
+              <text>{{c17.displayName}}</text>
+            </view>
+          </view>
+
+          <view class="tr">
+            <view class='td'>
+              <text>3-4\n 10:10\n-\n11:50</text>
+            </view>
+            <view class='td' data-idx='c31' style="background-color:{{c31.color}}" bindtap='moreInfo'>
+              <text>{{c31.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c32' style="background-color:{{c32.color}}" bindtap='moreInfo'>
+              <text>{{c32.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c33' style="background-color:{{c33.color}}" bindtap='moreInfo'>
+              <text>{{c33.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c34' style="background-color:{{c34.color}}" bindtap='moreInfo'>
+              <text>{{c34.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c35' style="background-color:{{c35.color}}" bindtap='moreInfo'>
+              <text>{{c35.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSix}}" style="background-color:{{c36.color}}" data-idx='c36' bindtap='moreInfo'>
+              <text>{{c36.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSeven}}" style="background-color:{{c37.color}}" data-idx='c37' bindtap='moreInfo'>
+              <text>{{c37.displayName}}</text>
+            </view>
+          </view>
+
+          <view class='middle-div'>
+            <text wx:if="{{hasLogin && hasGetCourse}}"> 午 休 11:50 - 13:40 </text>
+            <text wx:else style="color: rgb(177, 107, 107); line-height: 5px;">
+            {{!hasLogin ? '用户未登录到信息门户': '请在个人中心-课程刷新课程'}}
+            </text>
+
+          </view>
+
+          <view class="tr bg-g">
+            <view class='td'>
+              <text>5-6\n 13:40\n-\n15:20</text>
+            </view>
+            <view class='td' data-idx='c51' bindtap='moreInfo' style="background-color:{{c51.color}}">
+              <text>{{c51.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c52' bindtap='moreInfo' style="background-color:{{c52.color}}">
+              <text>{{c52.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c53' bindtap='moreInfo' style="background-color:{{c53.color}}">
+              <text>{{c53.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c54' bindtap='moreInfo' style="background-color:{{c54.color}}">
+              <text>{{c54.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c55' bindtap='moreInfo' style="background-color:{{c55.color}}">
+              <text>{{c55.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSix}}" data-idx='c56' bindtap='moreInfo' style="background-color:{{c56.color}}">
+              <text>{{c56.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSeven}}" data-idx='c57' bindtap='moreInfo' style="background-color:{{c57.color}}">
+              <text>{{c57.displayName}}</text>
+            </view>
+          </view>
+          <view class="tr">
+            <view class='td'>
+              <text>7-8\n 15:40\n-\n17:20</text>
+            </view>
+            <view class='td' data-idx='c71' bindtap='moreInfo' style="background-color:{{c71.color}}">
+              <text>{{c71.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c72' bindtap='moreInfo' style="background-color:{{c72.color}}">
+              <text>{{c72.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c73' bindtap='moreInfo' style="background-color:{{c73.color}}">
+              <text>{{c73.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c74' bindtap='moreInfo' style="background-color:{{c74.color}}">
+              <text>{{c74.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c75' bindtap='moreInfo' style="background-color:{{c75.color}}">
+              <text>{{c75.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSix}}" data-idx='c76' bindtap='moreInfo' style="background-color:{{c76.color}}">
+              <text>{{c76.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSeven}}" data-idx='c77' bindtap='moreInfo' style="background-color:{{c77.color}}">
+              <text>{{c77.displayName}}</text>
+            </view>
+          </view>
+
+
+          <view class="tr bg-g">
+            <view class='td'>9</view>
+            <view class='td' data-idx='c91' bindtap='moreInfo' style="background-color:{{c91.color}}">
+              <text>{{c91.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c92' bindtap='moreInfo' style="background-color:{{c92.color}}">
+              <text>{{c92.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c93' bindtap='moreInfo' style="background-color:{{c93.color}}">
+              <text>{{c93.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c94' bindtap='moreInfo' style="background-color:{{c94.color}}">
+              <text>{{c94.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c95' bindtap='moreInfo' style="background-color:{{c95.color}}">
+              <text>{{c95.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSix}}" data-idx='c96' bindtap='moreInfo' style="background-color:{{c96.color}}">
+              <text>{{c96.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSeven}}" data-idx='c97' bindtap='moreInfo' style="background-color:{{c97.color}}">
+              <text>{{c97.displayName}}</text>
+            </view>
+          </view>
+          <view class="tr">
+            <view class='td'>11</view>
+            <view class='td' data-idx='c111' bindtap='moreInfo' style="background-color:{{c111.color}}">
+              <text>{{c111.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c112' bindtap='moreInfo' style="background-color:{{c112.color}}">
+              <text>{{c112.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c113' bindtap='moreInfo' style="background-color:{{c113.color}}">
+              <text>{{c113.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c114' bindtap='moreInfo' style="background-color:{{c114.color}}">
+              <text>{{c114.displayName}}</text>
+            </view>
+            <view class='td' data-idx='c115' bindtap='moreInfo' style="background-color:{{c115.color}}">
+              <text>{{c115.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSix}}" data-idx='c116' bindtap='moreInfo' style="background-color:{{c116.color}}">
+              <text>{{c116.displayName}}</text>
+            </view>
+            <view class='td' wx-if="{{showSeven}}" data-idx='c117' bindtap='moreInfo' style="background-color:{{c117.color}}">
+              <text>{{c117.displayName}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+
+    </view>
+  </view>
+</l-capsule-bar>

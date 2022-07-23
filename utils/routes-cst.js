@@ -1,0 +1,1 @@
+export default PORTAL_LOGIN_URL = "pages/common/portal-login";
