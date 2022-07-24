@@ -1,0 +1,46 @@
+.picker-row {
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.picker-label {
+
+  font-size: 28rpx;
+  color: #696969;
+}
+
+.picker-style {
+  display: inline-block;
+  background-color: #FAF0E6;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}
+
+.item-container {
+  border-radius: 200px;
+  margin: 10px 5px;
+
+}
+
+.item-row {
+  padding-top: 0px;
+}
+
+.item-label {
+  color: #828282;
+  font-size: 28rpx;
+}
+
+.item-value {
+  color: #1C1C1C;
+  font-size: 28rpx;
+}
+
+.content-card {
+  border-bottom: 20rpx solid rgb(173, 27, 27) !important;
+  border-radius: 200rpx !important;
+}

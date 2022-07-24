@@ -69,6 +69,8 @@ Page({
           url: destPage,
         });
         return;
+      case 'GRADE':
+        destPage = "../../service/grade/grade"
       default:
         break;
     }
@@ -97,6 +99,13 @@ Page({
 
   async login() {
 
+    if (!this.data.xh || !this.data.pwd || !this.data.code) {
+      wx.showToast({
+        title: '请输入必填项',
+        icon: 'none'
+      });
+      return;
+    }
     this.setData({
       "logining": true
     });

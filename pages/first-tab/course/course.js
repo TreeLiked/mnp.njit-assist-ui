@@ -250,6 +250,7 @@ Page({
     if (!res.success) {
       wx.showToast({
         title: '课程加载失败',
+        icon: 'none'
       });
       return;
     }

@@ -3,7 +3,9 @@
     "pages/first-tab/course/course",
     "pages/second-tab/tools-box/tools-box",
     "pages/third-tab/settings/settings",
-    "pages/common/portal-login/portal-login"
+    "pages/common/portal-login/portal-login",
+    "pages/service/grade/grade"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

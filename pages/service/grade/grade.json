@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "content-title": "/components/content-title/index",
+    "content-card": "/components/content-card/index",
+    "l-button":"/dist/button/index",
+    "l-input": "/dist/input/index",
+    "l-icon":"/dist/icon/index"
+  }
+}

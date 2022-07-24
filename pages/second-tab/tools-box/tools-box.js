@@ -1,13 +1,23 @@
 // pages/second-tab/tools-box.js
 import tabbar from "../../../utils/tab-bar"
-
+import {
+  getDateWithoutYear,
+  getWeek,
+  getTimeRan
+} from '../../../utils/date'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: tabbar
+    list: tabbar,
+    // 顶部用户信息
+    userInfo: {
+      when: '',
+      date: '',
+      week: ''
+    }
   },
 
   /**
@@ -15,14 +25,32 @@ Page({
    */
   onLoad(options) {
 
+    this.initUserInfo();
   },
+
+  initUserInfo() {
+    this.setData({
+      userInfo: {
+        date: getDateWithoutYear(),
+        week: getWeek(),
+        when: getTimeRan()
+      }
+    })
+  },
+
+
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 跳转到成绩查询页面
    */
-  onReady() {
+  forwardGrade() {
+    wx.navigateTo({
+      // url: "../../common/portal-login/portal-login?feature=JW&service=GRADE"
+      url: "../../service/grade/grade"
 
+    });
   },
+
 
   /**
    * 生命周期函数--监听页面显示

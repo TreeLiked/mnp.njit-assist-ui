@@ -128,13 +128,17 @@ Component({
       if (val1) {
         const xnIndex = this.data.xnList.findIndex(item => item.id == val1);
         if (xnIndex != -1) {
-          this.setData({xnIndex});
+          this.setData({
+            xnIndex
+          });
         }
       }
       if (val2) {
         const xqIndex = this.data.xqList.findIndex(item => item.id == val2);
         if (xqIndex != -1) {
-          this.setData({xqIndex});
+          this.setData({
+            xqIndex
+          });
         }
       }
     },

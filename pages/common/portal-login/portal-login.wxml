@@ -26,7 +26,7 @@
       </view>
 
       <view style="margin-top: 50px; margin: 50px 50px; padding: 0 50px;">
-        <l-button loading="{{logining}}" disabled="{{logining}}" type="success" bind:lintap="login">登录</l-button>
+        <l-button loading="{{logining}}" disabled="{{logining}}" type="success" bind:lintap="login" size="large">登录</l-button>
       </view>
     </view>
 

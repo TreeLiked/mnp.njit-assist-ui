@@ -8,7 +8,28 @@
 
   <view class="container">
 
-
+    <view class="info-header">
+      <i-row>
+        <i-col span="6" i-class="col-class">
+          <view class="avatar-row">
+            <view class='user-avatar'>
+              <open-data mode='aspectFit' type="userAvatarUrl"></open-data>
+            </view>
+          </view>
+        </i-col>
+        <i-col span="18" i-class="col-class">
+          <view class="info-nick-ex">
+            <view>
+              <open-data type="userNickName"></open-data>
+              <text>，{{userInfo.when}}</text>
+            </view>
+            <view class="info-ex-2">
+              <text>今天是 {{userInfo.date}}，{{userInfo.week}}</text>
+            </view>
+          </view>
+        </i-col>
+      </i-row>
+    </view>
     <view>
       <view class="card-top">
         <view class="content-name">成绩查询</view>
@@ -16,7 +37,7 @@
 
       <view class="view-container">
         <l-grid row-num="3" show-border="{{true}}">
-          <l-grid-item key="1" slot="1" l-grid-item="grid-item">
+          <l-grid-item key="1" slot="1" l-grid-item="grid-item" bind:linitemtap="forwardGrade">
             <image src="/assets/images/grade1.png" class="image" mode="widthFix"></image>
             <view class="text">学期成绩</view>
           </l-grid-item>
