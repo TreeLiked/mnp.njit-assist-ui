@@ -3,7 +3,9 @@ import {
   XH,
   HAS_GET_COURSE,
   COURSE_CURRENT_XN,
-  COURSE_CURRENT_XQ
+  COURSE_CURRENT_XQ,
+  COURSE_CURRENT_WEEK,
+  COURSE_LOCAL
 } from '../../../utils/shared-keys'
 // import PORTAL_LOGIN_URL from "../../../utils/routes-cst"
 Component({
@@ -32,8 +34,8 @@ Component({
     curXq: null,
 
     // 当前学年学期
-    xnIndex: 5,
-    xqIndex: 0
+    xnIndex: null,
+    xqIndex: null
   },
 
   /**
@@ -48,10 +50,14 @@ Component({
     },
 
     refreshCourse(e) {
+      // 重置为第一周
+      wx.setStorageSync(COURSE_CURRENT_WEEK, 1);
+      // 删除课程缓存
+      wx.removeStorageSync(HAS_GET_COURSE);
+      wx.removeStorageSync(COURSE_LOCAL);
       wx.navigateTo({
         url: "../../common/portal-login/portal-login?feature=JW&service=COURSE"
       });
-      wx.removeStorageSync(HAS_GET_COURSE);
     },
 
     clearData() {
@@ -85,7 +91,6 @@ Component({
     },
 
     initXnXqPicker() {
-      console.log("!xnxq-----------");
 
       if (this.xnList == null) {
         const curYear = new Date().getFullYear();
@@ -153,8 +158,6 @@ Component({
         xqIndex: newXqIndex
       });
       wx.setStorageSync(COURSE_CURRENT_XQ, newXq);
-
-
     }
   }
 })

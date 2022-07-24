@@ -9,5 +9,7 @@ export const COURSE_LOCAL = "COURSE_LOCAL_DATA";
 export const COURSE_CURRENT_XN = "COURSE_CURRENT_XN";
 export const COURSE_CURRENT_XQ = "COURSE_CURRENT_XQ";
 export const COURSE_CURRENT_WEEK = "COURSE_CURRENT_WEEK";
+export const MAX_WEEK = "MAX_WEEK";
+
 
 export const XH = "XH";

@@ -28,7 +28,7 @@
   height: 190rpx;
   align-items: center;
   vertical-align: center;
-  margin-top: 6rpx;
+  margin-top: 20rpx;
 }
 
 
@@ -56,4 +56,28 @@
   margin-left: 5rpx;
   margin-right: 5rpx;
   border-radius: 6px;
+}
+
+.bottom-popup {
+  width: 100%;
+  background: #fff;
+  height: 350px;
+  padding-top: 50px;
+  overflow: auto;
+  text-align: center;
+  font-size: 28rpx;
+  color: #555;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.detail-row {
+  padding-bottom: 10px;
+  display: flex;
+
+}
+.detail-label {
+  color: #878787;
+  width: 100px;
+  text-align: right;
 }

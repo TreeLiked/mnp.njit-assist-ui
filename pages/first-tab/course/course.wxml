@@ -1,10 +1,58 @@
 <l-capsule-bar home-page="/pages/index/index" title="南工程助手" title-color="#fff" title-bar-color="#7BC8A4" bg-color="black" status-bar-color="#7BC8A4" capsule-left-icon-width="28" capsule-left-icon-height="28" capsule-right-icon-width="28" capsule-right-icon-height="28" hidden-capsule>
   <l-tab-bar list="{{list}}" />
 
+  <l-popup show="{{displayCourseDetail}}" content-align="bottom">
+    <view class='bottom-popup'>
+      <view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">课程代码: &ensp;</text>
+          <text class="detail-value">{{displayCourse.courseNo}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">课程名称: &ensp;</text>
+          <text class="detail-value">{{displayCourse.clsName}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">教师: &ensp;</text>
+          <text class="detail-value">{{displayCourse.teacher}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">上课班级: &ensp;</text>
+          <text class="detail-value">{{displayCourse.joinedClasses}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">上课地点: &ensp;</text>
+          <text class="detail-value">{{displayCourse.location}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">上课周: &ensp;</text>
+          <text class="detail-value">{{displayCourse.zcd}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">课程学分: &ensp;</text>
+          <text class="detail-value">{{displayCourse.credit}}</text>
+        </view>
+
+      </view>
+
+    </view>
+  </l-popup>
   <view class='body'>
+
     <view class="table">
       <view class="th0 bg-w">
-        <view class="th">时间</view>
+        <view>
+          <view wx-if="{{hasGetCourse && hasLoadCourse}}" class="th">
+            <picker bindchange="bindWeekChange" value="{{weekIndex}}" range="{{weekList}}" range-key="label">
+              <view class="th" style="display: flex; align-items: center; font-weight: 600;">
+                {{weekList[weekIndex].label}}
+                <text decode="true">&nbsp;</text>
+                <l-icon name="down" size="20" color="#fff" />
+              </view>
+            </picker>
+          </view>
+          <view class="th" wx:else>时间</view>
+        </view>
         <view class="th">周一</view>
         <view class="th">周二</view>
         <view class="th">周三</view>
@@ -35,25 +83,25 @@
             <view class='td'>
               <text>1-2\n8:00\n-\n9:40</text>
             </view>
-            <view class='td' style="background-color:{{c11.color}}" data-idx='c11' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c11.color}}" data-idx='c11' bindtap='displayCourseDetail'>
               <text>{{c11.displayName}}</text>
             </view>
-            <view class='td' style="background-color:{{c12.color}}" data-idx='c12' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c12.color}}" data-idx='c12' bindtap='displayCourseDetail'>
               <text>{{c12.displayName}}</text>
             </view>
-            <view class='td' style="background-color:{{c13.color}}" data-idx='c13' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c13.color}}" data-idx='c13' bindtap='displayCourseDetail'>
               <text>{{c13.displayName}}</text>
             </view>
-            <view class='td' style="background-color:{{c14.color}}" data-idx='c14' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c14.color}}" data-idx='c14' bindtap='displayCourseDetail'>
               <text>{{c14.displayName}}</text>
             </view>
-            <view class='td' style="background-color:{{c15.color}}" data-idx='c15' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c15.color}}" data-idx='c15' bindtap='displayCourseDetail'>
               <text>{{c15.displayName}}</text>
             </view>
-            <view class='td' style="background-color:{{c16.color}}" wx-if="{{showSix}}" data-idx='c16' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c16.color}}" wx-if="{{showSix}}" data-idx='c16' bindtap='displayCourseDetail'>
               <text>{{c16.displayName}}</text>
             </view>
-            <view class='td' style="background-color:{{c17.color}}" wx-if="{{showSeven}}" data-idx='c17' bindtap='moreInfo'>
+            <view class='td' style="background-color:{{c17.color}}" wx-if="{{showSeven}}" data-idx='c17' bindtap='displayCourseDetail'>
               <text>{{c17.displayName}}</text>
             </view>
           </view>
@@ -62,33 +110,33 @@
             <view class='td'>
               <text>3-4\n 10:10\n-\n11:50</text>
             </view>
-            <view class='td' data-idx='c31' style="background-color:{{c31.color}}" bindtap='moreInfo'>
+            <view class='td' data-idx='c31' style="background-color:{{c31.color}}" bindtap='displayCourseDetail'>
               <text>{{c31.displayName}}</text>
             </view>
-            <view class='td' data-idx='c32' style="background-color:{{c32.color}}" bindtap='moreInfo'>
+            <view class='td' data-idx='c32' style="background-color:{{c32.color}}" bindtap='displayCourseDetail'>
               <text>{{c32.displayName}}</text>
             </view>
-            <view class='td' data-idx='c33' style="background-color:{{c33.color}}" bindtap='moreInfo'>
+            <view class='td' data-idx='c33' style="background-color:{{c33.color}}" bindtap='displayCourseDetail'>
               <text>{{c33.displayName}}</text>
             </view>
-            <view class='td' data-idx='c34' style="background-color:{{c34.color}}" bindtap='moreInfo'>
+            <view class='td' data-idx='c34' style="background-color:{{c34.color}}" bindtap='displayCourseDetail'>
               <text>{{c34.displayName}}</text>
             </view>
-            <view class='td' data-idx='c35' style="background-color:{{c35.color}}" bindtap='moreInfo'>
+            <view class='td' data-idx='c35' style="background-color:{{c35.color}}" bindtap='displayCourseDetail'>
               <text>{{c35.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSix}}" style="background-color:{{c36.color}}" data-idx='c36' bindtap='moreInfo'>
+            <view class='td' wx-if="{{showSix}}" style="background-color:{{c36.color}}" data-idx='c36' bindtap='displayCourseDetail'>
               <text>{{c36.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSeven}}" style="background-color:{{c37.color}}" data-idx='c37' bindtap='moreInfo'>
+            <view class='td' wx-if="{{showSeven}}" style="background-color:{{c37.color}}" data-idx='c37' bindtap='displayCourseDetail'>
               <text>{{c37.displayName}}</text>
             </view>
           </view>
 
           <view class='middle-div'>
-            <text wx:if="{{hasLogin && hasGetCourse}}"> 午 休 11:50 - 13:40 </text>
+            <text wx:if="{{hasGetCourse}}"> 午 休 11:50 - 13:40 </text>
             <text wx:else style="color: rgb(177, 107, 107); line-height: 5px;">
-            {{!hasLogin ? '用户未登录到信息门户': '请在个人中心-课程刷新课程'}}
+              {{!hasLogin ? '用户未登录到信息门户': '请在个人中心-课程刷新课程'}}
             </text>
 
           </view>
@@ -97,25 +145,25 @@
             <view class='td'>
               <text>5-6\n 13:40\n-\n15:20</text>
             </view>
-            <view class='td' data-idx='c51' bindtap='moreInfo' style="background-color:{{c51.color}}">
+            <view class='td' data-idx='c51' bindtap='displayCourseDetail' style="background-color:{{c51.color}}">
               <text>{{c51.displayName}}</text>
             </view>
-            <view class='td' data-idx='c52' bindtap='moreInfo' style="background-color:{{c52.color}}">
+            <view class='td' data-idx='c52' bindtap='displayCourseDetail' style="background-color:{{c52.color}}">
               <text>{{c52.displayName}}</text>
             </view>
-            <view class='td' data-idx='c53' bindtap='moreInfo' style="background-color:{{c53.color}}">
+            <view class='td' data-idx='c53' bindtap='displayCourseDetail' style="background-color:{{c53.color}}">
               <text>{{c53.displayName}}</text>
             </view>
-            <view class='td' data-idx='c54' bindtap='moreInfo' style="background-color:{{c54.color}}">
+            <view class='td' data-idx='c54' bindtap='displayCourseDetail' style="background-color:{{c54.color}}">
               <text>{{c54.displayName}}</text>
             </view>
-            <view class='td' data-idx='c55' bindtap='moreInfo' style="background-color:{{c55.color}}">
+            <view class='td' data-idx='c55' bindtap='displayCourseDetail' style="background-color:{{c55.color}}">
               <text>{{c55.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSix}}" data-idx='c56' bindtap='moreInfo' style="background-color:{{c56.color}}">
+            <view class='td' wx-if="{{showSix}}" data-idx='c56' bindtap='displayCourseDetail' style="background-color:{{c56.color}}">
               <text>{{c56.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSeven}}" data-idx='c57' bindtap='moreInfo' style="background-color:{{c57.color}}">
+            <view class='td' wx-if="{{showSeven}}" data-idx='c57' bindtap='displayCourseDetail' style="background-color:{{c57.color}}">
               <text>{{c57.displayName}}</text>
             </view>
           </view>
@@ -123,25 +171,25 @@
             <view class='td'>
               <text>7-8\n 15:40\n-\n17:20</text>
             </view>
-            <view class='td' data-idx='c71' bindtap='moreInfo' style="background-color:{{c71.color}}">
+            <view class='td' data-idx='c71' bindtap='displayCourseDetail' style="background-color:{{c71.color}}">
               <text>{{c71.displayName}}</text>
             </view>
-            <view class='td' data-idx='c72' bindtap='moreInfo' style="background-color:{{c72.color}}">
+            <view class='td' data-idx='c72' bindtap='displayCourseDetail' style="background-color:{{c72.color}}">
               <text>{{c72.displayName}}</text>
             </view>
-            <view class='td' data-idx='c73' bindtap='moreInfo' style="background-color:{{c73.color}}">
+            <view class='td' data-idx='c73' bindtap='displayCourseDetail' style="background-color:{{c73.color}}">
               <text>{{c73.displayName}}</text>
             </view>
-            <view class='td' data-idx='c74' bindtap='moreInfo' style="background-color:{{c74.color}}">
+            <view class='td' data-idx='c74' bindtap='displayCourseDetail' style="background-color:{{c74.color}}">
               <text>{{c74.displayName}}</text>
             </view>
-            <view class='td' data-idx='c75' bindtap='moreInfo' style="background-color:{{c75.color}}">
+            <view class='td' data-idx='c75' bindtap='displayCourseDetail' style="background-color:{{c75.color}}">
               <text>{{c75.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSix}}" data-idx='c76' bindtap='moreInfo' style="background-color:{{c76.color}}">
+            <view class='td' wx-if="{{showSix}}" data-idx='c76' bindtap='displayCourseDetail' style="background-color:{{c76.color}}">
               <text>{{c76.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSeven}}" data-idx='c77' bindtap='moreInfo' style="background-color:{{c77.color}}">
+            <view class='td' wx-if="{{showSeven}}" data-idx='c77' bindtap='displayCourseDetail' style="background-color:{{c77.color}}">
               <text>{{c77.displayName}}</text>
             </view>
           </view>
@@ -149,49 +197,49 @@
 
           <view class="tr bg-g">
             <view class='td'>9</view>
-            <view class='td' data-idx='c91' bindtap='moreInfo' style="background-color:{{c91.color}}">
+            <view class='td' data-idx='c91' bindtap='displayCourseDetail' style="background-color:{{c91.color}}">
               <text>{{c91.displayName}}</text>
             </view>
-            <view class='td' data-idx='c92' bindtap='moreInfo' style="background-color:{{c92.color}}">
+            <view class='td' data-idx='c92' bindtap='displayCourseDetail' style="background-color:{{c92.color}}">
               <text>{{c92.displayName}}</text>
             </view>
-            <view class='td' data-idx='c93' bindtap='moreInfo' style="background-color:{{c93.color}}">
+            <view class='td' data-idx='c93' bindtap='displayCourseDetail' style="background-color:{{c93.color}}">
               <text>{{c93.displayName}}</text>
             </view>
-            <view class='td' data-idx='c94' bindtap='moreInfo' style="background-color:{{c94.color}}">
+            <view class='td' data-idx='c94' bindtap='displayCourseDetail' style="background-color:{{c94.color}}">
               <text>{{c94.displayName}}</text>
             </view>
-            <view class='td' data-idx='c95' bindtap='moreInfo' style="background-color:{{c95.color}}">
+            <view class='td' data-idx='c95' bindtap='displayCourseDetail' style="background-color:{{c95.color}}">
               <text>{{c95.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSix}}" data-idx='c96' bindtap='moreInfo' style="background-color:{{c96.color}}">
+            <view class='td' wx-if="{{showSix}}" data-idx='c96' bindtap='displayCourseDetail' style="background-color:{{c96.color}}">
               <text>{{c96.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSeven}}" data-idx='c97' bindtap='moreInfo' style="background-color:{{c97.color}}">
+            <view class='td' wx-if="{{showSeven}}" data-idx='c97' bindtap='displayCourseDetail' style="background-color:{{c97.color}}">
               <text>{{c97.displayName}}</text>
             </view>
           </view>
           <view class="tr">
             <view class='td'>11</view>
-            <view class='td' data-idx='c111' bindtap='moreInfo' style="background-color:{{c111.color}}">
+            <view class='td' data-idx='c111' bindtap='displayCourseDetail' style="background-color:{{c111.color}}">
               <text>{{c111.displayName}}</text>
             </view>
-            <view class='td' data-idx='c112' bindtap='moreInfo' style="background-color:{{c112.color}}">
+            <view class='td' data-idx='c112' bindtap='displayCourseDetail' style="background-color:{{c112.color}}">
               <text>{{c112.displayName}}</text>
             </view>
-            <view class='td' data-idx='c113' bindtap='moreInfo' style="background-color:{{c113.color}}">
+            <view class='td' data-idx='c113' bindtap='displayCourseDetail' style="background-color:{{c113.color}}">
               <text>{{c113.displayName}}</text>
             </view>
-            <view class='td' data-idx='c114' bindtap='moreInfo' style="background-color:{{c114.color}}">
+            <view class='td' data-idx='c114' bindtap='displayCourseDetail' style="background-color:{{c114.color}}">
               <text>{{c114.displayName}}</text>
             </view>
-            <view class='td' data-idx='c115' bindtap='moreInfo' style="background-color:{{c115.color}}">
+            <view class='td' data-idx='c115' bindtap='displayCourseDetail' style="background-color:{{c115.color}}">
               <text>{{c115.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSix}}" data-idx='c116' bindtap='moreInfo' style="background-color:{{c116.color}}">
+            <view class='td' wx-if="{{showSix}}" data-idx='c116' bindtap='displayCourseDetail' style="background-color:{{c116.color}}">
               <text>{{c116.displayName}}</text>
             </view>
-            <view class='td' wx-if="{{showSeven}}" data-idx='c117' bindtap='moreInfo' style="background-color:{{c117.color}}">
+            <view class='td' wx-if="{{showSeven}}" data-idx='c117' bindtap='displayCourseDetail' style="background-color:{{c117.color}}">
               <text>{{c117.displayName}}</text>
             </view>
           </view>

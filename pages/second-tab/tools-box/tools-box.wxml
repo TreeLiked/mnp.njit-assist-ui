@@ -37,7 +37,7 @@
     </view>
     <view>
       <view class="card-top">
-        <view class="content-name">校园相关</view>
+        <view class="content-name">校园</view>
       </view>
       <view class="view-container">
         <l-grid row-num="3" show-border="{{true}}">

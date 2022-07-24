@@ -1,5 +1,5 @@
 // var BASE_API_PREFIX = 'https://mnpmiao.iutr.cn';
-var BASE_API_PREFIX = 'http://192.168.101.17:20001/mnp/njit-assist';
+var BASE_API_PREFIX = 'http://192.168.0.102:20001/mnp/njit-assist';
 
 import {
   CLIENT_ID

@@ -11,6 +11,7 @@
   "usingComponents":{
     "l-button":"/dist/button/index",
     "l-tab-bar":"/dist/tab-bar/index",
-    "l-icon":"/dist/icon/index"
+    "l-icon":"/dist/icon/index",
+    "l-popup": "/dist/popup/index"
   }
 }

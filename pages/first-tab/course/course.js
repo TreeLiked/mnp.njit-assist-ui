@@ -7,11 +7,13 @@ import {
   COURSE_LOCAL,
   COURSE_CURRENT_XN,
   COURSE_CURRENT_XQ,
-  COURSE_CURRENT_WEEK
+  COURSE_CURRENT_WEEK,
+  MAX_WEEK
 } from '../../../utils/shared-keys'
 
 import {
-  get2
+  get2,
+  post
 } from '../../../utils/request'
 //获取应用实例
 const app = getApp()
@@ -24,16 +26,24 @@ Page({
   data: {
 
     list: tabbar,
+    // 用户是否登录过
     hasLogin: false,
+    // 是否获取过课程
     hasGetCourse: false,
+    // 页面是否已经加载课程
+    hasLoadCourse: false,
 
     // 当前展示的课程所属学年学期当前周
     pageXn: null,
     pageXq: null,
     pageWeek: null,
+    weekIndex: null,
+    weekList: null,
 
-    // 中间显示提示信息内容
-    middleTip: '',
+    // 底部展示课程详情
+    displayCourseDetail: false,
+    // 展示详情的课程
+    displayCourse: {},
 
 
     // 用来保存课表的源码
@@ -136,11 +146,21 @@ Page({
     }
   },
   async onShow() {
-    console.log('--------------', HAS_LOGIN);
 
-    const hasLogin = this.getStorageSyncOrDefault(HAS_LOGIN);
     const hasGetCourse = this.getStorageSyncOrDefault(HAS_GET_COURSE);
 
+    if (hasGetCourse) {
+      // 是否已经加载课程
+      if (this.data.hasLoadCourse) {
+        return;
+      }
+      // 加载缓存课程
+      this.loadStorageCourse(null);
+      this.initWeekListPicker();
+
+      return;
+    }
+    const hasLogin = this.getStorageSyncOrDefault(HAS_LOGIN);
     this.setData({
       hasLogin: hasLogin,
       hasGetCourse: hasGetCourse
@@ -148,13 +168,8 @@ Page({
     if (!hasLogin) {
       return;
     }
-    if (hasGetCourse) {
-      // 校验学年学期是否有变化
-      return;
-    }
     const clientAvail = await app.checkClientStatus('PORTAL');
 
-    // console.log('clientAvail--------', app.globalData.clientInfo.clientId);
     if (!clientAvail) {
       return;
     }
@@ -176,13 +191,9 @@ Page({
       });
       return;
     }
-    this.setCourseData(res.data);
-    wx.setStorageSync(HAS_GET_COURSE, true);
-    wx.setStorageSync(COURSE_LOCAL, JSON.stringify(res.data.courseQueryResult));
-    this.setData({
-      hasLogin: true,
-      hasGetCourse: true
-    })
+    this.handleCourseResponse(res);
+    this.initWeekListPicker();
+
     wx.hideLoading();
   },
   getUserInfo: function (e) {
@@ -194,14 +205,67 @@ Page({
     })
   },
 
+  /**
+   * 加载周选择器
+   */
+  initWeekListPicker() {
+    const maxWeek = wx.getStorageSync(MAX_WEEK);
+    if (!maxWeek) {
+      return;
+    }
+    let arr = [];
+    for (let i = 0; i < maxWeek; i++) {
 
+      arr[i] = {
+        id: i,
+        label: '第' + (i + 1) + '周'
+      }
+    }
+    this.setData({
+      weekList: arr,
+      weekIndex: this.getStorageSyncOrDefault(COURSE_CURRENT_WEEK, 1) - 1
+    });
+  },
+
+  /**
+   * 解析本地缓存中的课程
+   * @param  week 当前周
+   */
+  async loadStorageCourse(week) {
+    if (!week) {
+      week = this.getStorageSyncOrDefault(COURSE_CURRENT_WEEK, 1);
+    }
+    const courseData = wx.getStorageSync(COURSE_LOCAL);
+    const request = {
+      courseQueryResult: courseData,
+      currentWeek: week
+    }
+    wx.showLoading();
+    const res = await post('/course/parse', JSON.stringify(request));
+    wx.hideLoading();
+    this.handleCourseResponse(res);
+  },
+
+  handleCourseResponse(res) {
+    if (!res.success) {
+      wx.showToast({
+        title: '课程加载失败',
+      });
+      return;
+    }
+    this.setCourseData(res.data);
+    wx.setStorageSync(HAS_GET_COURSE, true);
+    wx.setStorageSync(COURSE_LOCAL, res.data.courseQueryResult);
+    this.setData({
+      hasGetCourse: true,
+      hasLoadCourse: true
+    });
+  },
 
   getStorageSyncOrDefault(key, defaultVal) {
     const val = wx.getStorageSync(key);
     return val && val != null ? val : defaultVal;
   },
-
-
 
 
   /**
@@ -210,16 +274,7 @@ Page({
    */
   setCourseData: function (courseReturnDTO) {
 
-    const xnList = courseReturnDTO.xnList;
-    const xqList = courseReturnDTO.xqList;
-    const weekList = courseReturnDTO.weekList;
-
-
-
-    wx.setStorageSync('MAX_WEEK', weekList.length);
-
-
-
+    wx.setStorageSync(MAX_WEEK, courseReturnDTO.maxWeek);
     const obj = courseReturnDTO.courseDataMap;
 
     console.log(obj);
@@ -282,26 +337,81 @@ Page({
       this.setData({
         showSix: true
       })
+    } else {
+      this.setData({
+        showSix: false
+      })
     }
     if (obj.c17 != null || obj.c37 != null || obj.c57 != null || obj.c77 != null || obj.c97 != null || obj.c117 != null) {
       this.setData({
         showSeven: true
       })
+    } else {
+      this.setData({
+        showSeven: false
+      })
     }
+    this.setData({
+      courseDataMap: obj
+    })
   },
 
 
   /**
    * 设置登录和获取课程状态
    */
-  setLoginAndCourseStatus: function(hasLogin, hasGetCourse, updaetStorage) {
+  setLoginAndCourseStatus: function (hasLogin, hasGetCourse, updaetStorage) {
     this.setData({
       hasLogin: hasLogin,
       hasGetCourse: hasGetCourse
     });
-    if(updaetStorage) {
+    if (updaetStorage) {
       wx.setStorageSync(HAS_LOGIN, hasLogin);
       wx.setStorageSync(HAS_GET_COURSE, hasGetCourse);
     }
   },
+
+
+  /**
+   * 回调设置周变换
+   * @param  e 点击事件
+   */
+  async bindWeekChange(e) {
+    const newWeekIndex = parseInt(e.detail.value);
+    this.setData({
+      weekIndex: newWeekIndex
+    });
+    wx.setStorageSync(COURSE_CURRENT_WEEK, newWeekIndex + 1);
+
+    await this.loadStorageCourse(newWeekIndex + 1);
+  },
+
+  /**
+   * 显示课程详情
+   * @param {*} e 
+   */
+  displayCourseDetail(e) {
+    let obj = e.currentTarget.dataset;
+    let idx = obj.idx;
+    let map = this.objToStrMap(this.data.courseDataMap);
+    let course = map.get(idx);
+    if (!course) {
+      return;
+    }
+    this.setData({
+      displayCourse: course
+    });
+    this.setData({
+      displayCourseDetail: true
+    });
+
+  },
+  objToStrMap: function (obj) {
+    let strMap = new Map();
+    for (let k of Object.keys(obj)) {
+      strMap.set(k, obj[k]);
+    }
+    return strMap;
+  },
+
 })

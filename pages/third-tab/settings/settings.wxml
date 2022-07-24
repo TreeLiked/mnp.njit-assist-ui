@@ -18,18 +18,18 @@
       <view>
         <picker bindchange="bindXnChange" value="{{xnIndex}}" range="{{xnList}}" range-key="label">
 
-          <l-list l-icon-class="icon" title="切换当前学年" right-desc="{{xnList[xnIndex].label}}" icon="time" />
+          <l-list l-icon-class="icon" title="切换当前学年" right-desc="{{xnIndex!=null ? xnList[xnIndex].label: '请选择'}}" icon="time" />
         </picker>
       </view>
       <view>
         <picker bindchange="bindXqChange" value="{{xqIndex}}" range="{{xqList}}" range-key="label">
 
-          <l-list l-icon-class="icon" title="切换当前学期" right-desc="{{xqList[xqIndex].label}}" icon="time" />
+          <l-list l-icon-class="icon" title="切换当前学期" right-desc="{{xqIndex!=null ? xqList[xqIndex].label: '请选择'}}" icon="time" />
         </picker>
       </view>
 
       <view bindtap="refreshCourse">
-        <l-list l-icon-class="icon" title="刷新课程" icon="setting" />
+        <l-list l-icon-class="icon" title="刷新课程" icon="setting" desc="请在更改学年/学期后点此刷新"/>
       </view>
 
     </content-card>
@@ -42,7 +42,7 @@
 
     <content-card class="content" name="其他">
       <l-list l-icon-class="icon" title="分享给朋友" icon="favor" />
-      <l-list l-icon-class="icon" title="清除登录信息" desc="不可恢复" icon="delete" bind:lintap="clearData" />
+      <l-list l-icon-class="icon" title="清除所有数据" desc="不可恢复" icon="delete" bind:lintap="clearData" />
     </content-card>
   </view>
 
