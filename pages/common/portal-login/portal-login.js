@@ -20,7 +20,7 @@ Page({
   data: {
 
     xh: '',
-    pwd: '',
+    pwd: 'khl000403',
     code: '',
     codeBase64: '',
     disableInput: false,

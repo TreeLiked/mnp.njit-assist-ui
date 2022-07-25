@@ -14,7 +14,14 @@ Page({
     // 默认当前年，第一学期
     pickerIndex: [5, 1],
     // 
-    gradeList: []
+    gradeData: {
+      passed: 0,
+      unPassed: 0,
+      total: 0,
+      gradeItems: []
+    },
+    displayGradeDetail: false,
+    displayGradeObj: {}
 
   },
 
@@ -52,11 +59,18 @@ Page({
 
     const res = await get2('/grade/query?xn=' + xnArg + (xqArg == 0 ? '' : '&xq=' + xqArg));
 
-    console.log(res);
     this.setData({
-      gradeList: res.data
+      gradeData: res.data
     });
     wx.hideLoading();
+  },
+
+  displayGradeDetail(e) {
+    const gradeObj = e.currentTarget.dataset.item;
+    this.setData({
+      displayGradeObj: gradeObj,
+      displayGradeDetail: true
+    });
   },
 
   /**
