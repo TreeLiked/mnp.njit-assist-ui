@@ -4,7 +4,8 @@
     "pages/second-tab/tools-box/tools-box",
     "pages/third-tab/settings/settings",
     "pages/common/portal-login/portal-login",
-    "pages/service/grade/grade"
+    "pages/service/grade/grade",
+    "pages/service/calendar/calendar"
 
   ],
   "window": {

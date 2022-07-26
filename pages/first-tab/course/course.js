@@ -175,6 +175,7 @@ Page({
     }
     wx.showLoading({
       title: '正在加载课程',
+      icon: 'none'
     });
     const xn = wx.getStorageSync(COURSE_CURRENT_XN);
     const xq = wx.getStorageSync(COURSE_CURRENT_XQ);
@@ -240,7 +241,7 @@ Page({
       courseQueryResult: courseData,
       currentWeek: week
     }
-    wx.showLoading();
+    wx.showLoading({title: '正在加载'});
     const res = await post('/course/parse', JSON.stringify(request));
     wx.hideLoading();
     this.handleCourseResponse(res);

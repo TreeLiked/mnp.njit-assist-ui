@@ -50,6 +50,11 @@ Page({
 
     });
   },
+  forwardCalendar() {
+    wx.navigateTo({
+      url: "../../service/calendar/calendar"
+    });
+  },
 
 
   /**

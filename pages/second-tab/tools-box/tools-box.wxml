@@ -69,7 +69,7 @@
 
           </l-grid-item>
 
-          <l-grid-item key="2" slot="2" l-grid-item="grid-item">
+          <l-grid-item key="2" slot="2" l-grid-item="grid-item" bind:linitemtap="forwardCalendar">
 
             <image src="/assets/images/calendar.png" class="image" mode="widthFix"></image>
             <view class="text">校历</view>
