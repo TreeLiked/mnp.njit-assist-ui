@@ -1,10 +1,8 @@
 <!--pages/calendar/calendar.wxml-->
-<l-capsule-bar home-page="/pages/index/index" title="最新校历" title-color="#fff" title-bar-color="#121212" bg-color="#121212" status-bar-color="#121212" capsule-left-icon-width="28" capsule-left-icon-height="28" capsule-right-icon-width="28" capsule-right-icon-height="28">
 
-  <view class='calendar-container'>
-    <view class='img-container' bindtouchmove="touchmoveCallback" bindtouchstart="touchstartCallback">
+<view class='calendar-container'>
+  <view class='img-container' bindtouchmove="touchmoveCallback" bindtouchstart="touchstartCallback">
     <image class='image-cal' mode='aspectFit' src='{{imgUrl}}' data-url='{{imgUrl}}' catchtap='displayImage' bindload='bindload' catchlongtap='goCanendarChoice' catchtouchend='touchend'></image>
     <!-- style="width: {{touch.scaleWidth}}rpx;height: {{touch.scaleHeight}}rpx"  -->
   </view>
-  </view>
-</l-capsule-bar>
+</view>

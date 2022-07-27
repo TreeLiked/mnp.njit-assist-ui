@@ -5,6 +5,6 @@
     "content-card": "/components/content-card/index",
     "l-button":"/dist/button/index",
     "l-input": "/dist/input/index"
-
-  }
+  },
+  "navigationBarTitleText": "登录到"
 }

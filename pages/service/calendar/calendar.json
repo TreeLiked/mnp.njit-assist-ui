@@ -1,5 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-  }
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#121212",
+  "navigationBarTitleText": "最新校历",
+  "navigationBarTextStyle": "white"
 }

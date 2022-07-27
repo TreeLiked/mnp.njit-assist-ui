@@ -1,5 +1,5 @@
-var BASE_API_PREFIX = 'https://mnp.njit-assist.iutr.tech/api/v1';
-// var BASE_API_PREFIX = 'http://172.21.53.22:20001/api/v1';
+// var BASE_API_PREFIX = 'https://mnp.njit-assist.iutr.tech/api/v1';
+var BASE_API_PREFIX = 'http://192.168.0.102:20001/api/v1';
 
 import {
   CLIENT_ID
@@ -30,6 +30,7 @@ export const get2 = (url, filter) => {
             getApp().globalData.clientInfo.clientId = null;
             wx.removeStorageSync(CLIENT_ID);
           }
+          wx.hideLoading();
           if (resp.success != true) {
             wx.showToast({
               title: resp.message,
@@ -41,6 +42,7 @@ export const get2 = (url, filter) => {
         resolve(res.data);
       },
       fail: function () {
+        wx.hideLoading();
         wx.showToast({
           title: '网络连接异常',
           icon: 'error'
@@ -71,6 +73,7 @@ export const post = (url, data) => {
           getApp().globalData.clientInfo.clientId = null;
           wx.removeStorageSync(CLIENT_ID);
         }
+        wx.hideLoading();
         if (resp.success != true) {
           wx.showToast({
             title: resp.message,
@@ -80,6 +83,7 @@ export const post = (url, data) => {
         resolve(resp);
       },
       fail: function () {
+        wx.hideLoading();
         wx.showToast({
           title: '网络连接异常',
           icon: 'error'

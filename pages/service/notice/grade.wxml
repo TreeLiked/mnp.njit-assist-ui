@@ -1,3 +1,4 @@
+<l-capsule-bar home-page="/pages/index/index" title="成绩查询" title-color="#fff" title-bar-color="#7BC8A4" bg-color="#7BC8A4" status-bar-color="#7BC8A4" capsule-left-icon-width="28" capsule-left-icon-height="28" capsule-right-icon-width="28" capsule-right-icon-height="28">
 
   <l-popup show="{{displayGradeDetail}}" content-align="bottom">
     <view class='bottom-popup'>
@@ -126,3 +127,8 @@ xq: "1" -->
       </scroll-view>
     </view>
   </view>
+
+
+
+
+</l-capsule-bar>

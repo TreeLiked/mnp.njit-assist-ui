@@ -5,18 +5,16 @@
     "pages/third-tab/settings/settings",
     "pages/common/portal-login/portal-login",
     "pages/service/grade/grade",
-    "pages/service/calendar/calendar"
-
+    "pages/service/calendar/calendar",
+    "pages/service/links/links"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "南工程助手",
-    "navigationStyle": "custom",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "navigationStyle": "custom",
   "usingComponents": {
     "l-capsule-bar": "/dist/capsule-bar/index"
   },
@@ -41,12 +39,5 @@
         "selectedIconPath": "/assets/icons/setting-selected.png"
       }
     ]
-  },
-  "subPackages": [{
-    "root": "pages/components/basic",
-    "pages": [
-      "pages/button/index",
-      "pages/icon/index"
-    ]
-  }]
+  }
 }

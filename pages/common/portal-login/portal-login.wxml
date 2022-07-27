@@ -1,6 +1,3 @@
-<l-capsule-bar home-page="/pages/index/index" title="登录" title-color="#fff" title-bar-color="#34bfa3" bg-color="#34bfa3" status-bar-color="#34bfa3" capsule-left-icon-width="28" capsule-left-icon-height="28" capsule-right-icon-width="28" capsule-right-icon-height="28">
-
-
 
   <view>
     <!-- <content-title name="登录到" describe="南京工程学院信息门户"> -->
@@ -34,8 +31,3 @@
     <!-- </content-title> -->
 
   </view>
-
-
-
-
-</l-capsule-bar>

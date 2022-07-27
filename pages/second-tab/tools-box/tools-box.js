@@ -55,6 +55,11 @@ Page({
       url: "../../service/calendar/calendar"
     });
   },
+  forwardLinks() {
+    wx.navigateTo({
+      url: "../../service/links/links"
+    });
+  },
 
 
   /**

@@ -3,11 +3,17 @@
   "usingComponents": {
     "content-title": "/components/content-title/index",
     "content-card": "/components/content-card/index",
-    "l-button":"/dist/button/index",
+    "l-button": "/dist/button/index",
     "l-input": "/dist/input/index",
-    "l-icon":"/dist/icon/index",
+    "l-icon": "/dist/icon/index",
     "l-grid-item": "/dist/grid-item/index",
     "l-grid": "/dist/grid/index",
     "l-popup": "/dist/popup/index"
-  }
+  },
+
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "成绩查询",
+  "navigationBarTextStyle": "black"
+
 }

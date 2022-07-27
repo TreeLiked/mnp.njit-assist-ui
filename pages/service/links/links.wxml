@@ -1,0 +1,30 @@
+<view>
+
+
+  <view style="background-color: #f9f9f9; padding: 0px 10px 0 10px; " wx:if="{{links.length> 0}}">
+    <scroll-view scroll-y>
+      <content-card name="{{idx+1}}、{{item.name}}" class="item-container" wx:for="{{links}}" wx:for-index="idx" wx:for-item="item" wx:key="key" bindtap="copy2Clipboard" data-item="{{item}}">
+        <view class="item-container">
+          <view class="item-row">
+            <text class="item-label">链接: </text>
+            <text class="item-value" style="color: #4169E1;">{{item.link}}</text>
+          </view>
+          <view class="item-row">
+            <text class="item-label">需要内网: </text>
+            <text class="item-value">{{item.needInnerNet}}</text>
+          </view>
+          <view class="item-row">
+            <text class="item-label" style="font-size: 24rpx;">点击卡片复制链接</text>
+          </view>
+        </view>
+      </content-card>
+      <view>
+        <text decode='true'>&emsp;</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:else style="display: flex; align-items: center; height: 80vh; justify-content: center; flex-direction: column;">
+    <image src="/assets/images/cat_pow.png" mode="aspectFit" style="height: 100px;"></image>
+    <view style="color: #696969; font-size: 28rpx; margin-top: 20px;">喵, 没有数据~~</view>
+  </view>
+</view>
