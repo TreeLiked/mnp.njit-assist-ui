@@ -35,7 +35,10 @@ Component({
 
     // 当前学年学期
     xnIndex: null,
-    xqIndex: null
+    xqIndex: null,
+
+    // 显示联系我
+    displayContactMe: false,
   },
 
   /**
@@ -162,6 +165,38 @@ Component({
         xqIndex: newXqIndex
       });
       wx.setStorageSync(COURSE_CURRENT_XQ, newXq);
+    },
+    displayContactMe() {
+      this.setData({
+        displayContactMe: true
+      });
+    },
+
+
+    /**
+     * 拷贝联系我的方式
+     * @param  e 
+     */
+    copy2Clipboard(e) {
+      const text = e.currentTarget.dataset.text;
+      wx.setClipboardData({
+        data: text,
+        success: function (e) {
+          wx.showToast({
+            title: '复制成功',
+            icon: 'success'
+          });
+        }
+      });
+      this.setData({
+        displayContactMe: false
+      });
+    },
+
+    forwardFeedback() {
+      wx.navigateTo({
+        url: '../feedback/feedback'
+      });
     }
   }
 })

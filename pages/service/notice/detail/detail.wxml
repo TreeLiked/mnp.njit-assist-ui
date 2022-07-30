@@ -1,0 +1,18 @@
+<view class='detail-container'>
+  <!-- <view class='img-container'>
+    <image src='{{coverUrl}}' mode='widthFix' class='img'></image>
+  </view> -->
+  <view class='title-container'>
+    <text>{{noticeItem.title}}</text>
+  </view>
+  <view class='date-container'>
+    <text>{{noticeItem.time}}</text>
+  </view>
+  <view class='content-container' wx:if="{{noticeItem.content}}">
+    <text>{{noticeItem.content}}</text>
+  </view>
+  <view class='annexText-container' data-url='{{noticeItem.annexUrl}}' wx-if='{{noticeItem.annexUrl !== null}}' bindtap='downloadAnnex'>
+    <text>{{noticeItem.annexText}}</text>
+  </view>
+
+</view>

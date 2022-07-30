@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "l-textarea": "/dist/textarea/index",
+    "l-button": "/dist/button/index"
+  },
+  "navigationBarTitleText": "反馈 & 建议"
+}

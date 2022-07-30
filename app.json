@@ -6,7 +6,12 @@
     "pages/common/portal-login/portal-login",
     "pages/service/grade/grade",
     "pages/service/calendar/calendar",
-    "pages/service/links/links"
+    "pages/service/links/links",
+    "pages/service/notice/notice",
+    "pages/service/notice/detail/detail",
+    "pages/service/book/book",
+    "pages/service/book/detail/detail",
+    "pages/third-tab/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -20,7 +25,8 @@
   },
   "tabBar": {
     "custom": true,
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/first-tab/course/course",
         "text": "课程",
         "iconPath": "/assets/icons/course-normal.png",

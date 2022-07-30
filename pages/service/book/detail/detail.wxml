@@ -1,0 +1,35 @@
+<!--pages/library/book-detail/book-detail.wxml-->
+
+<view class='detail-container'>
+
+  <view class='locs-container'>
+
+    <content-card name="{{idx+1}}. 索书号 {{item.searchNo}}" class="item-container" wx:for="{{bookDetail.locs}}" wx:for-index="idx" wx:for-item="item" wx:key="key" bindtap="displayGradeDetail" data-item="{{item}}">
+      <view class="item-container">
+        <view class="item-row" wx-if="{{pickerIndex[1] == 0}}">
+          <text class="item-label">条码号: </text>
+          <text class="item-value">{{item.idNo}} 学期</text>
+        </view>
+        <view class="item-row">
+          <text class="item-label">年卷期: </text>
+          <text class="item-value">{{item.yearNo}}</text>
+        </view>
+        <view class="item-row">
+          <text class="item-label">房间号: </text>
+          <text class="item-value">{{item.roomNo}}</text>
+        </view>
+        <view class="item-row">
+          <text class="item-label">书刊状态：: </text>
+          <text class="item-value">{{item.blState}}</text>
+        </view>
+
+      </view>
+    </content-card>
+  </view>
+
+  <view class='info-container'>
+    <i-card title="详细信息">
+      <view slot="content">{{bookDetail.detailInfo}}</view>
+    </i-card>
+  </view>
+</view>

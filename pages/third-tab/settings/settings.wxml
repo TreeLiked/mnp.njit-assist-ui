@@ -3,45 +3,73 @@
 <l-tab-bar list="{{list}}" />
 
 
-
-  <view style="padding-bottom: 100px;">
-    <content-card class="content" name="南京工程学院信息门户">
-      <view wx-if="{{hasLoginPortal}}">
-        <l-list l-icon-class="icon" title="童鞋已登录" icon="user" desc="{{xh}}" is-link="{{false}}" />
-      </view>
-      <view wx:else>
-        <l-list l-icon-class="icon" title="未登录到信息门户" icon="warning" is-link="{{false}}" />
-      </view>
-    </content-card>
-    <content-card class="content" name="课程设置">
+<view>
+  <l-popup show="{{displayContactMe}}" content-align="bottom">
+    <view class='bottom-popup'>
       <view>
-        <picker bindchange="bindXnChange" value="{{xnIndex}}" range="{{xnList}}" range-key="label">
+        <view class="detail-row">
+          <text class="detail-label" decode="true">微信: &ensp;</text>
+          <text class="detail-value">oilssio</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label" decode="true">邮箱: &ensp;</text>
+          <text class="detail-value">im.lqs2@icloud.com</text>
+        </view>
+        <view class="btn-row">
+          <l-button size="mini" type="warning" bind:lintap="copy2Clipboard" data-text='im.lqs2@icloud.com'>复制邮箱</l-button>
+          <l-button size="mini" type="success" data-text='oilssio' bind:lintap="copy2Clipboard" style="padding-left: 15px;">复制微信号</l-button>
 
-          <l-list l-icon-class="icon" title="切换当前学年" right-desc="{{xnIndex!=null ? xnList[xnIndex].label: '请选择'}}" icon="time" />
-        </picker>
+        </view>
+
       </view>
-      <view>
-        <picker bindchange="bindXqChange" value="{{xqIndex}}" range="{{xqList}}" range-key="label">
 
-          <l-list l-icon-class="icon" title="切换当前学期" right-desc="{{xqIndex!=null ? xqList[xqIndex].label: '请选择'}}" icon="time" />
-        </picker>
-      </view>
+    </view>
+  </l-popup>
+</view>
 
-      <view bindtap="refreshCourse">
-        <l-list l-icon-class="icon" title="刷新课程" icon="setting" desc="请在更改学年/学期后点此刷新"/>
-      </view>
+<view style="padding-bottom: 100px;">
+  <content-card class="content" name="南京工程学院信息门户">
+    <view wx-if="{{hasLoginPortal}}">
+      <l-list l-icon-class="icon" title="童鞋已登录" icon="user" desc="{{xh}}" is-link="{{false}}" />
+    </view>
+    <view wx:else>
+      <l-list l-icon-class="icon" title="未登录到信息门户" icon="warning" is-link="{{false}}" />
+    </view>
+  </content-card>
+  <content-card class="content" name="课程设置">
+    <view>
+      <picker bindchange="bindXnChange" value="{{xnIndex}}" range="{{xnList}}" range-key="label">
 
-    </content-card>
-    <content-card class="content" name="关于">
+        <l-list l-icon-class="icon" title="切换当前学年" right-desc="{{xnIndex!=null ? xnList[xnIndex].label: '请选择'}}" icon="time" />
+      </picker>
+    </view>
+    <view>
+      <picker bindchange="bindXqChange" value="{{xqIndex}}" range="{{xqList}}" range-key="label">
+
+        <l-list l-icon-class="icon" title="切换当前学期" right-desc="{{xqIndex!=null ? xqList[xqIndex].label: '请选择'}}" icon="time" />
+      </picker>
+    </view>
+
+    <view bindtap="refreshCourse">
+      <l-list l-icon-class="icon" title="刷新课程" icon="setting" desc="请在更改学年/学期后点此刷新" />
+    </view>
+
+  </content-card>
+  <content-card class="content" name="关于">
+    <view bindtap="displayContactMe">
       <l-list l-icon-class="icon" title="联系我" right-desc="" icon="comment" />
-      <l-list l-icon-class="icon" title="问题反馈" right-desc="" icon="customer-service" />
-      <l-list l-icon-class="icon" title="小程序使用协议" icon="more" />
+    </view>
+    <view bindtap="forwardFeedback">
+      <l-list l-icon-class="icon" title="反馈 & 建议" right-desc="" icon="customer-service" />
+    </view>
 
-    </content-card>
 
-    <content-card class="content" name="其他">
-      <l-list l-icon-class="icon" title="分享给朋友" icon="favor" />
-      <l-list l-icon-class="icon" title="清除所有数据" desc="不可恢复" icon="delete" bind:lintap="clearData" />
-    </content-card>
-  </view>
+    <!-- <l-list l-icon-class="icon" title="小程序使用协议" icon="more" /> -->
 
+  </content-card>
+
+  <content-card class="content" name="其他">
+    <l-list l-icon-class="icon" title="分享给朋友" icon="favor" />
+    <l-list l-icon-class="icon" title="清除所有数据" desc="不可恢复" icon="delete" bind:lintap="clearData" />
+  </content-card>
+</view>

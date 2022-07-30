@@ -57,7 +57,7 @@ xq: "1" -->
   </l-popup>
   <view>
 
-    <view>
+    <view class="header">
 
       <view class="picker-row">
         <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{pickerIndex}}" range="{{pickerArray}}" range-key="label">
@@ -79,6 +79,7 @@ xq: "1" -->
           </view>
         </picker>
       </view>
+
       <view>
         <view class="view-container" wx-if="{{gradeData.total > 0}}">
           <l-grid>
@@ -99,7 +100,7 @@ xq: "1" -->
       </view>
     </view>
 
-    <view style="background-color: #f9f9f9; padding: 10px 10px 0 10px; " wx:if="{{gradeData.total> 0}}">
+    <view style="background-color: #f9f9f9; padding: {{gradeData.total > 0 ? '150px 10px 0 10px': '10px 10px 0 10px'}} " wx:if="{{gradeData.total> 0}}">
       <scroll-view scroll-y>
         <content-card name="{{idx+1}}、{{item.courseName}}" class="item-container" wx:for="{{gradeData.gradeItems}}" wx:for-index="idx" wx:for-item="item" wx:key="key" bindtap="displayGradeDetail" data-item="{{item}}">
           <view class="item-container">

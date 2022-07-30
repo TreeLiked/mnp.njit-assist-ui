@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "usingComponents": {
+    "content-title": "/components/content-title/index",
+    "content-card": "/components/content-card/index",
+    "l-button":"/dist/button/index",
+    "l-input": "/dist/input/index",
+    "l-icon":"/dist/icon/index",
+    "l-popup": "/dist/popup/index",
+    "empty": "/components/empty/index"
+  },
+  "navigationBarTitleText": "图书信息检索",
+  "navigationBarBackgroundColor": "#FFFAFA"
+}

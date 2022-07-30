@@ -1,13 +1,11 @@
 {
-  "component": true,
+  "navigationBarTitleText": "借阅信息",
   "usingComponents": {
     "content-title": "/components/content-title/index",
     "content-card": "/components/content-card/index",
-    "l-button":"/dist/button/index",
-    "l-input": "/dist/input/index",
-    "l-icon":"/dist/icon/index",
     "l-grid-item": "/dist/grid-item/index",
     "l-grid": "/dist/grid/index",
     "l-popup": "/dist/popup/index"
   }
+
 }

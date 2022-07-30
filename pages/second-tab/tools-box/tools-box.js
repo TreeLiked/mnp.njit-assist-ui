@@ -60,6 +60,22 @@ Page({
       url: "../../service/links/links"
     });
   },
+  forwardNotices() {
+    wx.navigateTo({
+      url: "../../service/notice/notice"
+    });
+  },
+  forwardLibBook() {
+    wx.navigateTo({
+      url: "../../service/book/book"
+    });
+  },
+  forwardForbidden() {
+    wx.showToast({
+      title: '服务暂未开放',
+      icon: 'none'
+    });
+  },
 
 
   /**

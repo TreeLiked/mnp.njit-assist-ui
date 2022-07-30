@@ -1,0 +1,15 @@
+{
+  "component": true,
+  "usingComponents": {
+    "content-title": "/components/content-title/index",
+    "content-card": "/components/content-card/index",
+    "l-button":"/dist/button/index",
+    "l-input": "/dist/input/index",
+    "l-icon":"/dist/icon/index",
+    "l-grid-item": "/dist/grid-item/index",
+    "l-grid": "/dist/grid/index",
+    "l-popup": "/dist/popup/index",
+    "empty": "/components/empty/index"
+  },
+  "navigationBarTitleText": "校园通知"
+}

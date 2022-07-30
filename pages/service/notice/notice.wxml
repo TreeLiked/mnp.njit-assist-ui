@@ -1,0 +1,20 @@
+<view>
+  <view style="background-color: #f9f9f9; padding: 0px 10px 0 10px; " wx:if="{{notices.length> 0}}">
+    <scroll-view scroll-y bindscrolltolower='loadMore'>
+      <content-card name="{{item.time}}" class="item-container" wx:for="{{notices}}" wx:for-index="idx" wx:for-item="item" wx:key="key" bindtap="forwardNoticeDetail" data-item="{{item}}">
+        <view class="item-container">
+          <view class="item-row">
+            <text class="item-value">{{item.title}}</text>
+          </view>
+
+        </view>
+      </content-card>
+      <view>
+        <text decode='true'>&emsp;</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:else>
+    <empty></empty>
+  </view>
+</view>

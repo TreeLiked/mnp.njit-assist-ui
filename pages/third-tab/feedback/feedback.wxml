@@ -1,0 +1,15 @@
+<view class="page-container">
+
+
+  <view class="input-container">
+    <l-textarea value="{{desc}}" placeholder="请输入问题/建议描述.." l-class="area-container" indicator="{{false}}" bind:lininput="setDesc" />
+  </view>
+
+  <view class="input-container">
+    <l-textarea value="{{contactInfo}}" placeholder="请输入联系方式 [可选]" l-class="area-container" indicator="{{false}}" auto-height="{{true}}" bind:lininput="setContact" />
+  </view>
+
+  <view class="btn-row">
+    <l-button size="large" type="default" bind:lintap="submitFeedback">提交</l-button>
+  </view>
+</view>

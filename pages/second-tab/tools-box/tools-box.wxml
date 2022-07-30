@@ -39,12 +39,12 @@
             <view class="text">学期成绩</view>
           </l-grid-item>
 
-          <l-grid-item key="2" slot="2" l-grid-item="grid-item">
+          <l-grid-item key="2" slot="2" l-grid-item="grid-item" bind:linitemtap="forwardForbidden">
             <image src="/assets/images/grade_point.png" class="image" mode="widthFix"></image>
             <view class="text">绩点</view>
           </l-grid-item>
 
-          <l-grid-item key="3" slot="3" l-grid-item="grid-item">
+          <l-grid-item key="3" slot="3" l-grid-item="grid-item" bind:linitemtap="forwardForbidden">
             <image src="/assets/images/credit_new.png" class="image" mode="widthFix"></image>
             <view class="text">创新学分</view>
           </l-grid-item>
@@ -59,7 +59,7 @@
       </view>
       <view class="view-container">
         <l-grid row-num="3" show-border="{{true}}">
-          <l-grid-item key="1" slot="1" l-grid-item="grid-item">
+          <l-grid-item key="1" slot="1" l-grid-item="grid-item" bind:linitemtap="forwardLibBook">
 
             <image src="/assets/images/book.png" class="image" mode="widthFix"></image>
             <view class="text">图书</view>
@@ -71,7 +71,7 @@
             <image src="/assets/images/calendar.png" class="image" mode="widthFix"></image>
             <view class="text">校历</view>
           </l-grid-item>
-          <l-grid-item key="3" slot="3" l-grid-item="grid-item">
+          <l-grid-item key="3" slot="3" l-grid-item="grid-item" bind:linitemtap="forwardNotices">
             <image src="/assets/images/notice.png" class="image" mode="widthFix"></image>
             <view class="text">公告</view>
             <!-- <view class="text-desc">最新通知</view> -->

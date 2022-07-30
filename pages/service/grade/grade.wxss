@@ -1,10 +1,21 @@
-.picker-row {
+.header {
+  position: fixed;
+  z-index: 99;
+  background-color: #F8F8FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+}
 
+
+.picker-row {
   display: flex;
   align-items: center;
   width: 100%;
   justify-content: center;
-  padding: 30px 0 10px 0;
+  padding: 25px 0 25px 0;
 }
 
 .picker-label {
@@ -23,7 +34,6 @@
 .item-container {
   border-radius: 200px;
   margin: 10px 5px;
-
 }
 
 .item-row {
@@ -73,6 +83,7 @@
   display: flex;
 
 }
+
 .detail-label {
   color: #878787;
   width: 100px;

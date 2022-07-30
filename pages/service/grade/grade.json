@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "content-title": "/components/content-title/index",
     "content-card": "/components/content-card/index",
     "l-button": "/dist/button/index",
     "l-input": "/dist/input/index",
@@ -12,7 +11,7 @@
   },
 
   "backgroundTextStyle": "dark",
-  "navigationBarBackgroundColor": "#fff",
+  "navigationBarBackgroundColor": "#F8F8FF",
   "navigationBarTitleText": "成绩查询",
   "navigationBarTextStyle": "black"
 

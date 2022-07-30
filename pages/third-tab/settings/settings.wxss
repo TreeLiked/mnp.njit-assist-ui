@@ -1,1 +1,36 @@
-/* pages/third-tab/settings.wxss */
+.bottom-popup {
+  width: 100%;
+  background: #fff;
+  height: 240px;
+  padding-top: 50px;
+  overflow: auto;
+  text-align: center;
+  font-size: 28rpx;
+  color: #555;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.detail-row {
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.detail-label {
+  color: #878787;
+  width: 100px;
+  font-size: 27rpx;
+  text-align: right;
+  width: 100px;
+}
+
+.detail-value {
+  color: #000000;
+  font-size: 29rpx;
+}
+
+.btn-row {
+  padding-top: 10px;
+  padding-left: 100px;
+  text-align: left;
+}

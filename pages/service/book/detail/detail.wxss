@@ -1,0 +1,30 @@
+
+.item-container {
+  border-radius: 200px;
+  margin: 10px 5px;
+}
+
+.item-row {
+  padding-top: 10px;
+}
+
+.item-label {
+  color: #828282;
+  font-size: 28rpx;
+}
+
+.item-value {
+  color: #1C1C1C;
+  font-size: 28rpx;
+}
+
+.info-container {
+  margin-top: 40rpx;
+  color: #696969;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+  text-align: left;
+  padding: 10px;  
+  
+}
+

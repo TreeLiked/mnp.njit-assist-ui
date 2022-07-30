@@ -4,7 +4,9 @@
     "l-tab-bar": "/dist/tab-bar/index",
     "content-title": "/components/content-title/index",
     "content-card": "/components/content-card/index",
-    "l-list": "/dist/list/index"
+    "l-list": "/dist/list/index",
+    "l-popup": "/dist/popup/index",
+    "l-button": "/dist/button/index"
   },
-  "navigationBarTitleText": "用户设置"
+  "navigationBarTitleText": "设置"
 }
