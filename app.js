@@ -53,6 +53,7 @@ App({
     userInfo: null,
     clientInfo: {
       clientId: null,
+      xh: null
     },
     userInfo: {
       'xh': '',

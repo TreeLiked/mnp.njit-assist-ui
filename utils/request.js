@@ -1,8 +1,9 @@
 var BASE_API_PREFIX = 'https://mnp.njit-assist.iutr.tech/api/v1';
-// var BASE_API_PREFIX = 'http://192.168.0.102:20001/api/v1';
+// var BASE_API_PREFIX = 'http://192.168.101.17:20001/api/v1';
 
 import {
-  CLIENT_ID
+  CLIENT_ID,
+  XH
 } from '../utils/shared-keys'
 export const get = (url) => {
   return get2(url, true);
@@ -11,8 +12,12 @@ export const get = (url) => {
 
 export const get2 = (url, filter) => {
   let clientId = getApp().globalData.clientInfo.clientId;
-  if(clientId == null) {
+  let xh = getApp().globalData.clientInfo.xh;
+  if (clientId == null) {
     clientId = wx.getStorageSync(CLIENT_ID);
+  }
+  if (xh == null) {
+    xh = wx.getStorageSync(XH);
   }
   return new Promise((resolve, reject) => {
     wx.request({
@@ -21,12 +26,13 @@ export const get2 = (url, filter) => {
       dataType: 'json',
       header: {
         "content-type": "application/json;charset=UTF-8",
-        "CLIENT_ID": clientId
+        "CLIENT_ID": clientId,
+        "XH": xh
       },
       success: function (res) {
         if (filter) {
           let resp = res.data;
-          if(resp.code == "60001") {
+          if (resp.code == "60001") {
             getApp().globalData.clientInfo.clientId = null;
             wx.removeStorageSync(CLIENT_ID);
           }
@@ -54,10 +60,14 @@ export const get2 = (url, filter) => {
 
 export const post = (url, data) => {
   let clientId = getApp().globalData.clientInfo.clientId;
-  if(clientId == null) {
+  if (clientId == null) {
     clientId = wx.getStorageSync(CLIENT_ID);
   }
-    return new Promise((resolve, reject) => {
+  let xh = getApp().globalData.clientInfo.xh;
+  if (xh == null) {
+    xh = wx.getStorageSync(XH);
+  }
+  return new Promise((resolve, reject) => {
     wx.request({
       url: BASE_API_PREFIX + url,
       method: 'POST',
@@ -65,11 +75,12 @@ export const post = (url, data) => {
       dataType: 'json',
       header: {
         "content-type": "application/json;charset=UTF-8",
-        "CLIENT_ID": clientId
+        "CLIENT_ID": clientId,
+        "XH": xh
       },
       success: function (res) {
         let resp = res.data;
-        if(resp.code == "60001") {
+        if (resp.code == "60001") {
           getApp().globalData.clientInfo.clientId = null;
           wx.removeStorageSync(CLIENT_ID);
         }

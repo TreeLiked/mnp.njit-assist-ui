@@ -69,7 +69,9 @@
   </content-card>
 
   <content-card class="content" name="其他">
-    <l-list l-icon-class="icon" title="分享给朋友" icon="favor" />
+    <!-- <view bindtap="displayShare">
+      <l-list l-icon-class="icon" title="分享给朋友" icon="favor" />
+    </view> -->
     <l-list l-icon-class="icon" title="清除所有数据" desc="不可恢复" icon="delete" bind:lintap="clearData" />
   </content-card>
 </view>

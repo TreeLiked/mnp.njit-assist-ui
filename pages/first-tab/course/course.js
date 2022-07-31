@@ -2,6 +2,7 @@ import deviceUtil from "../../../dist/utils/device-util"
 import tabbar from "../../../utils/tab-bar"
 import {
 
+  XH,
   HAS_LOGIN,
   HAS_GET_COURSE,
   COURSE_LOCAL,
@@ -111,42 +112,11 @@ Page({
     })
   },
   onLoad: function (options) {
-    // 0 本地直接打开, 1 通过登录后跳转到此页面
-    let afterLogin = options.local == 0;
-    console.log(afterLogin);
-
-
-
-    this.getNavigationBarHeight();
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    // 加载缓存的学号
+    const xh = wx.getStorageSync(XH);
+    app.globalData.clientInfo.xh = xh ?? "";
   },
   async onShow() {
-
     const hasGetCourse = this.getStorageSyncOrDefault(HAS_GET_COURSE);
 
     if (hasGetCourse) {
@@ -241,7 +211,9 @@ Page({
       courseQueryResult: courseData,
       currentWeek: week
     }
-    wx.showLoading({title: '正在加载'});
+    wx.showLoading({
+      title: '正在加载'
+    });
     const res = await post('/course/parse', JSON.stringify(request));
     wx.hideLoading();
     this.handleCourseResponse(res);
@@ -414,6 +386,5 @@ Page({
       strMap.set(k, obj[k]);
     }
     return strMap;
-  },
-
+  }
 })

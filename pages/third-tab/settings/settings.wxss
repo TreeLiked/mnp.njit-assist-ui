@@ -33,4 +33,5 @@
   padding-top: 10px;
   padding-left: 100px;
   text-align: left;
+  color: white !important;
 }

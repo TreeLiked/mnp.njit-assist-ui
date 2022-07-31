@@ -118,5 +118,11 @@ Page({
    */
   onShareAppMessage() {
 
+    return {
+      title: '课程成绩一键查询, 快来南工程助手试试吧',
+      path: "pages/first-tab/course/course",
+      imageUrl: "https://iutr-media.oss-cn-hangzhou.aliyuncs.com/mnpmiao/mnpmiao-share.png"
+    };
+
   }
 })

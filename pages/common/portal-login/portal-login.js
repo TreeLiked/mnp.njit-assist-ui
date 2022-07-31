@@ -122,6 +122,7 @@ Page({
       wx.setStorageSync(XH, this.data.xh);
       wx.setStorageSync(HAS_LOGIN, true);
       this.forwardServicePage();
+      app.globalData.clientInfo.xh = this.data.xh;
     } else {
       this.refreshCode();
     }
