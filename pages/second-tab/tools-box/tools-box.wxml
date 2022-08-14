@@ -4,7 +4,6 @@
 
 
   <view class="container">
-
     <view class="info-header">
       <i-row>
         <i-col span="6" i-class="col-class">

@@ -35,7 +35,6 @@ Page({
   },
 
   onLoad: function (options) {
-
     this.initXnXqPicker();
     this.setXnXqStatus();
 
@@ -45,7 +44,26 @@ Page({
   },
 
 
+  /**
+   * 刷新课程
+   */
   refreshCourse(e) {
+    const val1 = wx.getStorageSync(COURSE_CURRENT_XN);
+    if (!val1 || val1 == null) {
+      wx.showToast({
+        title: '请选择学年后刷新课程',
+        icon: 'none'
+      });
+      return;
+    }
+    const val2 = wx.getStorageSync(COURSE_CURRENT_XQ);
+    if (!val2 || val2 == null) {
+      wx.showToast({
+        title: '请选择学期后刷新课程',
+        icon: 'none'
+      });
+      return;
+    }
     // 重置为第一周
     wx.setStorageSync(COURSE_CURRENT_WEEK, 1);
     // 删除课程缓存
@@ -56,6 +74,9 @@ Page({
     });
   },
 
+  /**
+   * 清除所有数据
+   */
   clearData() {
     wx.clearStorageSync();
     wx.showToast({
@@ -66,6 +87,9 @@ Page({
   },
 
 
+  /**
+   * 刷新缓存
+   */
   refreshStorage() {
     const that = this;
     wx.getStorage({
@@ -86,14 +110,14 @@ Page({
     getApp().globalData.clientInfo.clientId = null;
   },
 
+  /**
+   * 初始化学年 & 学期的下拉数据
+   */
   initXnXqPicker() {
-
     if (this.xnList == null) {
       const curYear = new Date().getFullYear();
-
       const xnList = []
       for (let i = curYear - 5, j = 0; i < curYear + 5; i++, j++) {
-
         xnList[j] = {
           id: i,
           label: i + '-' + (i + 1)
@@ -118,6 +142,10 @@ Page({
       });
     }
   },
+
+  /**
+   * 设置学年 & 学期的下拉选择状态
+   */
   setXnXqStatus() {
     const val1 = wx.getStorageSync(COURSE_CURRENT_XN);
     const val2 = wx.getStorageSync(COURSE_CURRENT_XQ);
@@ -140,11 +168,10 @@ Page({
   },
 
 
-  bindXnChange: function (e) {
 
+  bindXnChange: function (e) {
     const newXnIndex = parseInt(e.detail.value);
     const newXn = this.data.xnList[newXnIndex].id;
-
     this.setData({
       xnIndex: newXnIndex
     });
@@ -159,6 +186,10 @@ Page({
     });
     wx.setStorageSync(COURSE_CURRENT_XQ, newXq);
   },
+
+  /**
+   * 展示联系我的方式
+   */
   displayContactMe() {
     this.setData({
       displayContactMe: true

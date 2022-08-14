@@ -104,6 +104,8 @@ Page({
     c116: {},
     c117: {},
 
+
+    insertAd: null
   },
   //事件处理函数
   bindViewTap: function () {
@@ -115,6 +117,11 @@ Page({
     // 加载缓存的学号
     const xh = wx.getStorageSync(XH);
     app.globalData.clientInfo.xh = xh ?? "";
+    if (wx.createInterstitialAd) {
+      this.data.insertAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-b14169a115330744'
+      });
+    }
   },
   async onShow() {
     const hasGetCourse = this.getStorageSyncOrDefault(HAS_GET_COURSE);
@@ -122,11 +129,21 @@ Page({
     if (hasGetCourse) {
       // 是否已经加载课程
       if (this.data.hasLoadCourse) {
+        if (this.data.insertAd) {
+          this.data.insertAd.show().catch((err) => {
+            console.error(err)
+          })
+        }
         return;
       }
       // 加载缓存课程
       this.loadStorageCourse(null);
       this.initWeekListPicker();
+      if (this.data.insertAd) {
+        this.data.insertAd.show().catch((err) => {
+          console.error(err)
+        })
+      }
 
       return;
     }
@@ -153,7 +170,7 @@ Page({
 
     const res = await get2('/course/query?xn=' + xn + '&xq=' + xq + '&currentWeek=' + week, false);
 
-    console.log(res);
+
     if (!res.success) {
       wx.hideLoading();
       wx.showToast({
@@ -166,6 +183,10 @@ Page({
     this.initWeekListPicker();
 
     wx.hideLoading();
+    wx.showToast({
+      title: '在左上角切换【当前周】',
+      icon: 'none'
+    });
   },
   getUserInfo: function (e) {
     console.log(e)
