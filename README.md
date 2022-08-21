@@ -13,12 +13,12 @@
 <img src="https://user-images.githubusercontent.com/41715321/185774646-03a69faf-1365-4bec-ade8-16109b65e633.PNG" width="250px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774650-9102ab41-8b29-44c8-b34e-4daf87b0e062.PNG" width="250px"/>
 
 #### 部分功能截图
-<img src="https://user-images.githubusercontent.com/41715321/185774685-41bce9c3-d7ed-46eb-b873-83a2c4233b83.PNG" width="200px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774704-175e43b6-f190-4214-a8cb-30e4e0bbd9e2.PNG" width="200px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774718-3e5c89e0-028e-470f-b830-906469371c80.PNG" width="200px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774726-3c9152d1-3923-4aaa-bcec-6877541e5b56.PNG" width="200px"/>
+<img src="https://user-images.githubusercontent.com/41715321/185774685-41bce9c3-d7ed-46eb-b873-83a2c4233b83.PNG" width="170px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774704-175e43b6-f190-4214-a8cb-30e4e0bbd9e2.PNG" width="170px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774718-3e5c89e0-028e-470f-b830-906469371c80.PNG" width="170px"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774726-3c9152d1-3923-4aaa-bcec-6877541e5b56.PNG" width="170px"/>
 
 
 ### 致谢
-感谢：Jetbrains IntelliJ IDEA 工具支持&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774861-b56916b0-726f-401c-94aa-60facfe5a338.jpeg" width="50px"/>
-感谢：孔慧霖同学
+###### 感谢：Jetbrains IntelliJ IDEA 工具支持&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/41715321/185774861-b56916b0-726f-401c-94aa-60facfe5a338.jpeg" width="50px"/>
+###### 感谢：孔慧霖同学
 
 
 
